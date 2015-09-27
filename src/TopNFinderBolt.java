@@ -32,7 +32,7 @@ public class TopNFinderBolt extends BaseBasicBolt {
             String keyWithLowestCount = null;
             int min = 0;
             for (Map.Entry entry : currentTopWords.entrySet()) {
-                int countValue = Integer.parseInt((String) entry.getValue());
+                Integer countValue = (Integer) entry.getValue();
                 if (min > countValue) {
                     min = countValue;
                     keyWithLowestCount = (String) entry.getKey();
