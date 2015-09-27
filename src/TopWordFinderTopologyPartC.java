@@ -24,6 +24,9 @@ public class TopWordFinderTopologyPartC {
     Config config = new Config();
     config.setDebug(true);
 
+    String fileName = args[0];
+    config.put("fileName", fileName);
+
     builder.setSpout("spout", new FileReaderSpout(), 1);
     builder.setBolt("split", new SplitSentenceBolt(), 8).shuffleGrouping("spout");
     builder.setBolt("normalize", new NormalizerBolt(), 8).shuffleGrouping("split");
