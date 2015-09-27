@@ -41,7 +41,8 @@ public class TopNFinderBolt extends BaseBasicBolt {
 
             if (count > min && keyWithLowestCount != null) {
                 currentTopWords.remove(keyWithLowestCount);
-            }
+            } else
+                currentTopWords.remove(word);
         }
         //reports the top N words periodically
         if (System.currentTimeMillis() - lastReportTime >= intervalToReport) {
